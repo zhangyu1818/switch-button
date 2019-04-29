@@ -36,7 +36,7 @@ const switches = new SwitchButton("switch", ["off", "on"], (checked, ele) => {
 });
 
 // toggle
-const btn = document.querySelector('data-id="5cc560"]');
+const btn = document.querySelector('[data-id="5cc560"]');
 switches.toggle(btn)
 
 // destroy
