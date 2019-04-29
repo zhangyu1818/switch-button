@@ -6,9 +6,13 @@ class Switch {
   switchValue;
   checkedValue;
 
-  template = (defaultValue, id) => `
-        <button type="button" class="${styles.switch}" data-${id}>
-            <span class="${styles["switch-inner"]}">${defaultValue}</span>
+  template = (id, checked) => `
+        <button type="button" class="${styles.switch} ${
+    checked ? styles.checked : ""
+  }" data-${id}>
+            <span class="${styles["switch-inner"]}">${
+    checked ? this.checkedValue : this.switchValue
+  }</span>
         </button>`;
 
   loadingTemplate = `
@@ -24,7 +28,8 @@ class Switch {
     [this.switchValue, this.checkedValue] = values;
     this.onChange = onChange;
     switchesEle.forEach(ele => {
-      ele.outerHTML = this.template(this.switchValue, identifier);
+      const checked = ele.dataset.checked;
+      ele.outerHTML = this.template(identifier, checked !== undefined);
     });
     this.switchesEle = [...document.querySelectorAll(`[data-${identifier}]`)];
     window.addEventListener("click", this.onClickSwitch);
