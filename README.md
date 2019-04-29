@@ -1,17 +1,24 @@
 # switch button
 
+a group of simple switch button
+
 [demo](http://sbzy.me/switch-button)
 
 ## usage
 
 `npm i -S switch-button`
 
+*html*
 ```html
-<button type="button" data-switch></button>
+<button data-switch></button>
+<!--default checked-->
+<button data-switch data-checked></button>
+<!--attach data-->
+<button data-switch data-id="5cc560"></button>
 ```
-
+*js*
 ```javascript
-import SwitchButton from "switch-button";
+import SwitchButton from "switch-button"; // or use script tag
 
 // find elements attribute has "data-switch"
 const switches = new SwitchButton("switch", ["off", "on"], (checked, ele) => {
@@ -27,4 +34,11 @@ const switches = new SwitchButton("switch", ["off", "on"], (checked, ele) => {
     switches.setLoading(ele, false);
   }, 5000);
 });
+
+// toggle
+const btn = document.querySelector('data-id="5cc560"]');
+switches.toggle(btn)
+
+// destroy
+switches.destroy();
 ```

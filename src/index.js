@@ -6,10 +6,12 @@ class Switch {
   switchValue;
   checkedValue;
 
-  template = (id, checked) => `
+  template = (id, checked, dataset) => `
         <button type="button" class="${styles.switch} ${
     checked ? styles.checked : ""
-  }" data-${id}>
+  }" data-${id} ${Object.keys(dataset)
+    .map(key => `data-${key}="${dataset[key]}"`)
+    .join("")}>
             <span class="${styles["switch-inner"]}">${
     checked ? this.checkedValue : this.switchValue
   }</span>
@@ -28,16 +30,11 @@ class Switch {
     [this.switchValue, this.checkedValue] = values;
     this.onChange = onChange;
     switchesEle.forEach(ele => {
-      const checked = ele.dataset.checked;
-      ele.outerHTML = this.template(identifier, checked !== undefined);
+      const { checked, ...other } = ele.dataset;
+      ele.outerHTML = this.template(identifier, checked !== undefined, other);
     });
     this.switchesEle = [...document.querySelectorAll(`[data-${identifier}]`)];
     window.addEventListener("click", this.onClickSwitch);
-    const unload = () => {
-      this.destroy();
-      window.removeEventListener("beforeunload", unload);
-    };
-    window.addEventListener("beforeunload", unload);
   }
 
   onClickSwitch = ({ target }) => {
@@ -71,6 +68,10 @@ class Switch {
         ele.classList.remove(styles["switch-disable"]);
       }
     }
+  };
+
+  toggle = ele => {
+    this.onClickSwitch({ target: ele });
   };
 
   findNode = node => {

@@ -1,7 +1,7 @@
 {
   "name": "switch-button",
   "version": "1.0.1",
-  "description": "",
+  "description": "a group of simple switch button",
   "main": "dist/index.js",
   "scripts": {
     "dev": "webpack-dev-server  --env.development",
@@ -11,7 +11,11 @@
     "*.css",
     "*.scss"
   ],
-  "author": "",
+  "author": "zhangyu1818",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangyu1818/switch-button.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.3",

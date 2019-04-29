@@ -16,4 +16,3 @@ new Switch("switch2", ["×", "✓"], (checked, ele) => {
   console.log("element=>", ele);
   console.log(`checked=>${checked}`);
 });
-window.switches = switches;
