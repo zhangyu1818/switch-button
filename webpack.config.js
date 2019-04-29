@@ -99,7 +99,10 @@ const prod = {
     index: "./src/index.js"
   },
   output: {
-    filename: "[name].js"
+    filename: "[name].js",
+    library: "SwitchButton",
+    libraryTarget: "umd",
+    libraryExport: "default"
   },
   devtool: "none",
   optimization: {

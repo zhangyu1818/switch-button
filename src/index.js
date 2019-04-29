@@ -28,6 +28,11 @@ class Switch {
     });
     this.switchesEle = [...document.querySelectorAll(`[data-${identifier}]`)];
     window.addEventListener("click", this.onClickSwitch);
+    const unload = () => {
+      this.destroy();
+      window.removeEventListener("beforeunload", unload);
+    };
+    window.addEventListener("beforeunload", unload);
   }
 
   onClickSwitch = ({ target }) => {
