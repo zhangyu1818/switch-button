@@ -2,7 +2,7 @@
 
 a group of simple switch button
 
-[demo](http://sbzy.me/switch-button)
+[demo](https://zhangyu1818.com/switch-button/)
 
 ## usage
 
