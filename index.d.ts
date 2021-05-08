@@ -8,7 +8,7 @@ export interface SwitchValues {
     loading: boolean;
     checked: boolean;
     text?: [string, string];
-    onChange?: (checked: boolean) => void | unknown | Promise<unknown>;
+    onChange?: (checked: boolean) => void;
 }
 declare const extend: (options: ExtendOptions) => <T extends HTMLElement>(element: T, values?: Partial<SwitchValues> | undefined) => {
     checked: boolean;
