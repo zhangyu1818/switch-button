@@ -7,9 +7,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "tsc && lessc src/index.less dist/index.css",
-    "example": "yarn build && cp dist/* example",
-    "gh-pages": "yarn example && gh-pages -d example"
+    "build": "rm -rf dist && tsc && lessc src/index.less dist/index.css",
+    "example": "npm run build && cp dist/* example",
+    "prepublishOnly": "npm run build && np --no-publish",
+    "gh-pages": "npm run example && gh-pages -d example"
   },
   "author": "zhangyu1818",
   "repository": {
