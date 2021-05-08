@@ -1,0 +1,32 @@
+{
+  "name": "switch-button",
+  "version": "2.0.0",
+  "description": "a group of simple switch button",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc && lessc src/index.less dist/index.css",
+    "example": "yarn build && cp dist/* example",
+    "gh-pages": "yarn example && gh-pages -d example"
+  },
+  "author": "zhangyu1818",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangyu1818/switch-button.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-typescript": "^7.13.0",
+    "@testing-library/dom": "^7.30.4",
+    "@types/jest": "^26.0.23",
+    "babel-jest": "^26.6.3",
+    "gh-pages": "^3.1.0",
+    "jest": "^26.6.3",
+    "less": "^4.1.1",
+    "typescript": "^4.2.4"
+  }
+}

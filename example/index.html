@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+    <title>example</title>
+  </head>
+  <body>
+    <div>
+      <button id="switch"></button>
+      <button id="switch-disabled"></button>
+      <button id="switch-loading"></button>
+    </div>
+    <br />
+    <div>
+      <button id="switch-checked"></button>
+      <button id="switch-checked-disabled"></button>
+      <button id="switch-checked-loading"></button>
+    </div>
+    <p>small switch</p>
+    <div>
+      <button id="switch-small-checked"></button>
+      <button id="switch-small-checked-disabled"></button>
+      <button id="switch-small-checked-loading"></button>
+    </div>
+    <p>reactive</p>
+    <div>
+      <button id="switch-reactive"></button>
+      <div>
+        <br />
+        <button id="toggle-checked">toggle checked</button>
+        <button id="toggle-disabled">toggle disabled</button>
+        <button id="toggle-loading">toggle loading</button>
+        <button id="delete-switch-button">delete switch button</button>
+      </div>
+    </div>
+    <script type="module">
+      import createSwitch, { extend, deleteSwitch } from './index.js'
+      const createSmallSwitch = extend({ role: 'small switch button', small: true })
+
+      createSwitch(document.getElementById('switch'), {
+        text: ['关闭', '开启'],
+      })
+      createSwitch(document.getElementById('switch-disabled'), { disabled: true })
+      createSwitch(document.getElementById('switch-loading'), { loading: true })
+
+      createSwitch(document.getElementById('switch-checked'), { checked: true })
+      createSwitch(document.getElementById('switch-checked-disabled'), {
+        checked: true,
+        disabled: true,
+      })
+      createSwitch(document.getElementById('switch-checked-loading'), {
+        checked: true,
+        loading: true,
+      })
+
+      createSmallSwitch(document.getElementById('switch-small-checked'), { checked: true })
+      createSmallSwitch(document.getElementById('switch-small-checked-disabled'), {
+        checked: true,
+        disabled: true,
+      })
+      createSmallSwitch(document.getElementById('switch-small-checked-loading'), {
+        checked: true,
+        loading: true,
+      })
+
+      const handler = createSwitch(document.getElementById('switch-reactive'))
+
+      document.getElementById('toggle-checked').onclick = () => (handler.checked = !handler.checked)
+      document.getElementById('toggle-loading').onclick = () => (handler.loading = !handler.loading)
+      document.getElementById('toggle-disabled').onclick = () =>
+        (handler.disabled = !handler.disabled)
+      document.getElementById('delete-switch-button').onclick = () =>
+        deleteSwitch(document.getElementById('switch-reactive'))
+    </script>
+  </body>
+</html>
