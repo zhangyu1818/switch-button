@@ -15,19 +15,17 @@ const createProxy = (obj, handler) => {
     const filtered = { checked: obj.checked, disabled: obj.disabled, loading: obj.loading };
     return new Proxy(filtered, {
         set(target, key, value, receiver) {
-            try {
-                if (key === 'loading') {
-                    handler.setLoading(value);
-                }
-                else if (key === 'checked') {
-                    handler.setChecked(value);
-                }
-                else if (key === 'disabled') {
-                    handler.setDisabled(value);
-                }
+            if (obj.delete) {
+                return Reflect.set(target, key, value, receiver);
             }
-            catch (_a) {
-                console.warn('switch status change error,is switch element still exist?');
+            if (key === 'loading') {
+                handler.setLoading(value);
+            }
+            else if (key === 'checked') {
+                handler.setChecked(value);
+            }
+            else if (key === 'disabled') {
+                handler.setDisabled(value);
             }
             return Reflect.set(target, key, value, receiver);
         },
@@ -120,6 +118,7 @@ const deleteSwitch = (element) => {
         eleToProxy.delete(element);
         const rawValues = proxyToRaw.get(proxyValues);
         if (rawValues) {
+            rawValues.delete = true;
             proxyToRaw.delete(proxyValues);
         }
     }
