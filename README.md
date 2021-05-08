@@ -1,6 +1,7 @@
 # switch-button 
 ![npm-version](https://img.shields.io/npm/v/switch-button.svg)
 [![codecov](https://codecov.io/gh/zhangyu1818/switch-button/branch/main/graph/badge.svg?token=XMOY7SVSJ4)](https://codecov.io/gh/zhangyu1818/switch-button)
+![bundlesize-js-image](https://img.badgesize.io/https:/unpkg.com/switch-button/dist/index.js?label=gzip&compression=gzip&style=flat-square)
 
 Ant Design style and reactivity switch button, it can use anywhere, no framework limit.
 
