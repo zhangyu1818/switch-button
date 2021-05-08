@@ -5,3 +5,4 @@ dist
 coverage
 example/*
 !example/index.html
+.DS_Store
