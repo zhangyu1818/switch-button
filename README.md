@@ -2,12 +2,14 @@
 
 Ant Design style switch button, it can use everywhere, no framework limit.
 
+[preview](https://zhangyu1818.github.io/switch-button/)
+
 ## installation
 
 ```shell
-    yarn add switch-button
-    // or
-    npm install switch-button
+yarn add switch-button
+// or
+npm install switch-button
 ```
 
 ## usage
