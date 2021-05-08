@@ -4,3 +4,4 @@ node_modules
 coverage
 example
 .DS_Store
+package-lock.json
