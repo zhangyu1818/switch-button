@@ -1,3 +1,5 @@
+import wave, { clearEffect } from 'wave-effect'
+
 interface ExtendOptions {
   prefixCls?: string
   role?: string
@@ -71,11 +73,13 @@ const extend = (options: ExtendOptions) => {
 
   const createSwitch = <T extends HTMLElement>(element: T, values?: Partial<SwitchValues>) => {
     const buttonEle = element
+    buttonEle.innerHTML = ''
+
     const handleEle = document.createElement('div')
     const textEle = document.createElement('span')
     const loadingEle = document.createElement('span')
 
-    buttonEle.className = classWithPrefix('switch')
+    buttonEle.classList.add(classWithPrefix('switch'))
     if (small) {
       buttonEle.classList.add(classWithPrefix('switch-small'))
     }
@@ -135,12 +139,18 @@ const extend = (options: ExtendOptions) => {
 
     buttonEle.addEventListener('click', internalClickEvent)
 
+    wave(buttonEle, {
+      disabledClass: ['loading', 'disabled'],
+    })
+
     return proxyValues
   }
   return createSwitch
 }
 
 const deleteSwitch = <T extends HTMLElement>(element: HTMLElement) => {
+  clearEffect(element)
+
   element.innerHTML = ''
   element.className = ''
   element.removeAttribute('role')
